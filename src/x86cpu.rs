@@ -2993,104 +2993,107 @@ impl x86cpu
 
     fn getInstructionType(&self,it:&String) -> instructionType
     {
-        if it=="Pop" { return instructionType::instrPop; }
-        else if it=="PopNMRR" { return instructionType::instrPopNoModRegRm; }
-        else if it=="Push" { return instructionType::instrPush; }
-        else if it=="PushNMRR" { return instructionType::instrPushNoModRegRm; }
-        else if it=="Pushf" { return instructionType::instrPushf; }
-        else if it=="Popf" { return instructionType::instrPopf; }
-        else if it=="Ret" { return instructionType::instrRet; }
-        else if it=="Clc" { return instructionType::instrClc; }
-        else if it=="Cld" { return instructionType::instrCld; }
-        else if it=="Std" { return instructionType::instrStd; }
-        else if it=="Inc" { return instructionType::instrInc; }
-        else if it=="Dec" { return instructionType::instrDec; }
-        else if it=="IncNMRR" { return instructionType::instrIncNoModRegRm; }
-        else if it=="DecNMRR" { return instructionType::instrDecNoModRegRm; }
-        else if it=="Xchg" { return instructionType::instrXchg; }
-        else if it=="XchgNMRR" { return instructionType::instrXchgNoModRegRm; }
-        else if it=="Lods" { return instructionType::instrLods; }
-        else if it=="Movs" { return instructionType::instrMovs; }
-        else if it=="Stos" { return instructionType::instrStos; }
-        else if it=="Scas" { return instructionType::instrScas; }
-        else if it=="Cmps" { return instructionType::instrCmps; }
-        else if it=="JmpShort" { return instructionType::instrJmpShort; }
-        else if it=="JmpNear" { return instructionType::instrJmpNear; }
-        else if it=="JmpNp" { return instructionType::instrJmpNp; }
-        else if it=="Int" { return instructionType::instrInt; }
-        else if it=="CallReg" { return instructionType::instrCallReg; }
-        else if it=="CallRel16" { return instructionType::instrCallRel16; }
-        else if it=="CallFar" { return instructionType::instrCallFar; }
-        else if it=="CallFarPtr" { return instructionType::instrCallFarPtr; }
-        else if it=="Mov" { return instructionType::instrMov; }
-        else if it=="MovNMRR" { return instructionType::instrMovNoModRegRm; }
-        else if it=="Sub" { return instructionType::instrSub; }
-        else if it=="SubNMRR" { return instructionType::instrSubNoModRegRm; }
-        else if it=="Sbb" { return instructionType::instrSbb; }
-        else if it=="And" { return instructionType::instrAnd; }
-        else if it=="AndNMRR" { return instructionType::instrAndNoModRegRm; }
-        else if it=="Add" { return instructionType::instrAdd; }
-        else if it=="AddNMRR" { return instructionType::instrAddNoModRegRm; }
-        else if it=="Adc" { return instructionType::instrAdc; }
-        else if it=="AdcNMRR" { return instructionType::instrAdcNoModRegRm; }
-        else if it=="Xlat" { return instructionType::instrXlat; }
-        else if it=="In" { return instructionType::instrIn; }
-        else if it=="Or" { return instructionType::instrOr; }
-        else if it=="OrNMRR" { return instructionType::instrOrNoModRegRm; }
-        else if it=="Xor" { return instructionType::instrXor; }
-        else if it=="XorNMRR" { return instructionType::instrXorNoModRegRm; }
-        else if it=="Cmp" { return instructionType::instrCmp; }
-        else if it=="Test" { return instructionType::instrTest; }
-        else if it=="TestNMRR" { return instructionType::instrTestNoModRegRm; }
-        else if it=="CmpNMRR" { return instructionType::instrCmpNoModRegRm; }
-        else if it=="Shl" { return instructionType::instrShl; }
-        else if it=="Shr" { return instructionType::instrShr; }
-        else if it=="Cwd" { return instructionType::instrCwd; }
-        else if it=="Neg" { return instructionType::instrNeg; }
-        else if it=="Not" { return instructionType::instrNot; }
-        else if it=="Imul" { return instructionType::instrImul; }
-        else if it=="Mul" { return instructionType::instrMul; }
-        else if it=="Div" { return instructionType::instrDiv; }
-        else if it=="Lea" { return instructionType::instrLea; }
-        else if it=="Out" { return instructionType::instrOut; }
-        else if it=="OutNMRR" { return instructionType::instrOutNoModRegRm; }
-        else if it=="Cbw" { return instructionType::instrCbw; }
-        else if it=="Cmc" { return instructionType::instrCmc; }
-        else if it=="Stc" { return instructionType::instrStc; }
-        else if it=="Cli" { return instructionType::instrCli; }
-        else if it=="Sti" { return instructionType::instrSti; }
-        else if it=="Ljmp" { return instructionType::instrLongJump; }
-        else if it=="Nop" { return instructionType::instrNop; }
-        else if it=="Lds" { return instructionType::instrLds; }
-        else if it=="Les" { return instructionType::instrLes; }
-        else if it=="Ror" { return instructionType::instrRor; }
-        else if it=="Rol" { return instructionType::instrRol; }
-        else if it=="Rcr" { return instructionType::instrRcr; }
-        else if it=="Rcl" { return instructionType::instrRcl; }
-        else if it=="Pusha" { return instructionType::instrPusha; }
-        else if it=="Popa" { return instructionType::instrPopa; }
-        else if it=="Retf" { return instructionType::instrRetf; }
-        else if it=="Retfiw" { return instructionType::instrRetfiw; }
-        else if it=="Iret" { return instructionType::instrIret; }
-        else if it=="Jumpnw" { return instructionType::instrJumpnw; }
-        else if it=="Jumpfw" { return instructionType::instrJumpfw; }
-        else if it=="Lahf" { return instructionType::instrLahf; }
-        else if it=="Sahf" { return instructionType::instrSahf; }
-        else if it=="Aad" { return instructionType::instrAad; }
-        else if it=="Aam" { return instructionType::instrAam; }
-        else if it=="Sar" { return instructionType::instrSar; }
-        else if it=="Retiw" { return instructionType::instrRetiw; }
-        else if it=="Idiv" { return instructionType::instrIdiv; }
-        else if it=="Das" { return instructionType::instrDas; }
-        else if it=="Daa" { return instructionType::instrDaa; }
-        else if it=="Aaa" { return instructionType::instrAaa; }
-        else if it=="Aas" { return instructionType::instrAas; }
-        else if it=="Salc" { return instructionType::instrSalc; }
-        else if it=="Wait" { return instructionType::instrWait; }
-        else if it=="Fninit" { return instructionType::instrFninit; }
-        else if it=="Fnstsw" { return instructionType::instrFnstsw; }
-        else if it=="SbbNMRR" { return instructionType::instrSbbNoModRegRm; }
-        else { return instructionType::instrNone; }
+        match it.as_str() {
+            "Pop" => instructionType::instrPop,
+            "PopNMRR" => instructionType::instrPopNoModRegRm,
+            "Push" => instructionType::instrPush,
+            "PushNMRR" => instructionType::instrPushNoModRegRm,
+            "Pushf" => instructionType::instrPushf,
+            "Popf" => instructionType::instrPopf,
+            "Ret" => instructionType::instrRet,
+            "Clc" => instructionType::instrClc,
+            "Cld" => instructionType::instrCld,
+            "Std" => instructionType::instrStd,
+            "Inc" => instructionType::instrInc,
+            "Dec" => instructionType::instrDec,
+            "IncNMRR" => instructionType::instrIncNoModRegRm,
+            "DecNMRR" => instructionType::instrDecNoModRegRm,
+            "Xchg" => instructionType::instrXchg,
+            "XchgNMRR" => instructionType::instrXchgNoModRegRm,
+            "Lods" => instructionType::instrLods,
+            "Movs" => instructionType::instrMovs,
+            "Stos" => instructionType::instrStos,
+            "Scas" => instructionType::instrScas,
+            "Cmps" => instructionType::instrCmps,
+            "JmpShort" => instructionType::instrJmpShort,
+            "JmpNear" => instructionType::instrJmpNear,
+            "JmpNp" => instructionType::instrJmpNp,
+            "Int" => instructionType::instrInt,
+            "CallReg" => instructionType::instrCallReg,
+            "CallRel16" => instructionType::instrCallRel16,
+            "CallFar" => instructionType::instrCallFar,
+            "CallFarPtr" => instructionType::instrCallFarPtr,
+            "Mov" => instructionType::instrMov,
+            "MovNMRR" => instructionType::instrMovNoModRegRm,
+            "Sub" => instructionType::instrSub,
+            "SubNMRR" => instructionType::instrSubNoModRegRm,
+            "Sbb" => instructionType::instrSbb,
+            "And" => instructionType::instrAnd,
+            "AndNMRR" => instructionType::instrAndNoModRegRm,
+            "Add" => instructionType::instrAdd,
+            "AddNMRR" => instructionType::instrAddNoModRegRm,
+            "Adc" => instructionType::instrAdc,
+            "AdcNMRR" => instructionType::instrAdcNoModRegRm,
+            "Xlat" => instructionType::instrXlat,
+            "In" => instructionType::instrIn,
+            "Or" => instructionType::instrOr,
+            "OrNMRR" => instructionType::instrOrNoModRegRm,
+            "Xor" => instructionType::instrXor,
+            "XorNMRR" => instructionType::instrXorNoModRegRm,
+            "Cmp" => instructionType::instrCmp,
+            "Test" => instructionType::instrTest,
+            "TestNMRR" => instructionType::instrTestNoModRegRm,
+            "CmpNMRR" => instructionType::instrCmpNoModRegRm,
+            "Shl" => instructionType::instrShl,
+            "Shr" => instructionType::instrShr,
+            "Cwd" => instructionType::instrCwd,
+            "Neg" => instructionType::instrNeg,
+            "Not" => instructionType::instrNot,
+            "Imul" => instructionType::instrImul,
+            "Mul" => instructionType::instrMul,
+            "Div" => instructionType::instrDiv,
+            "Lea" => instructionType::instrLea,
+            "Out" => instructionType::instrOut,
+            "OutNMRR" => instructionType::instrOutNoModRegRm,
+            "Cbw" => instructionType::instrCbw,
+            "Cmc" => instructionType::instrCmc,
+            "Stc" => instructionType::instrStc,
+            "Cli" => instructionType::instrCli,
+            "Sti" => instructionType::instrSti,
+            "Ljmp" => instructionType::instrLongJump,
+            "Nop" => instructionType::instrNop,
+            "Lds" => instructionType::instrLds,
+            "Les" => instructionType::instrLes,
+            "Ror" => instructionType::instrRor,
+            "Rol" => instructionType::instrRol,
+            "Rcr" => instructionType::instrRcr,
+            "Rcl" => instructionType::instrRcl,
+            "Pusha" => instructionType::instrPusha,
+            "Popa" => instructionType::instrPopa,
+            "Retf" => instructionType::instrRetf,
+            "Retfiw" => instructionType::instrRetfiw,
+            "Iret" => instructionType::instrIret,
+            "Jumpnw" => instructionType::instrJumpnw,
+            "Jumpfw" => instructionType::instrJumpfw,
+            "Lahf" => instructionType::instrLahf,
+            "Sahf" => instructionType::instrSahf,
+            "Aad" => instructionType::instrAad,
+            "Aam" => instructionType::instrAam,
+            "Sar" => instructionType::instrSar,
+            "Retiw" => instructionType::instrRetiw,
+            "Idiv" => instructionType::instrIdiv,
+            "Das" => instructionType::instrDas,
+            "Daa" => instructionType::instrDaa,
+            "Aaa" => instructionType::instrAaa,
+            "Aas" => instructionType::instrAas,
+            "Salc" => instructionType::instrSalc,
+            "Wait" => instructionType::instrWait,
+            "Fninit" => instructionType::instrFninit,
+            "Fnstsw" => instructionType::instrFnstsw,
+            "SbbNMRR" => instructionType::instrSbbNoModRegRm,
+            _ => instructionType::instrNone,
+        }
+    }
     }
 
     fn getOpcodeStructure(&self,opcode:&u16,found:&mut bool) -> [&str;7]
